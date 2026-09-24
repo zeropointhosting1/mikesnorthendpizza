@@ -30,6 +30,8 @@ export const metadata = {
   title: { default: DEFAULT_TITLE, template: "%s | Mike's North End Pizza Co." },
   openGraph: { type: 'website', siteName: "Mike's North End Pizza Co.", locale: 'en_US', images: [SHARE_IMAGE] },
   twitter: { card: 'summary_large_image', images: [SHARE_IMAGE] },
+  // The GitHub Pages demo sets this so search engines don't index a copy of the site.
+  ...(process.env.NEXT_PUBLIC_NOINDEX === '1' && { robots: { index: false, follow: false } }),
 };
 
 export default function RootLayout({ children }) {

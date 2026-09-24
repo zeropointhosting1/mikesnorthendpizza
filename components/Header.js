@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { asset } from '@/lib/base-path';
 import { usePathname } from 'next/navigation';
 import { business, navLinks } from '@/lib/site-config';
 import OrderButton from './OrderButton';
@@ -16,21 +18,21 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="wrap header-inner">
-        <a href="/" className="logo" aria-label={`${business.name} home`}>
+        <Link href="/" className="logo" aria-label={`${business.name} home`}>
           <Image
             className="logo-image"
-            src="/assets/mikes-north-end-logo-wave.png"
+            src={asset('/assets/mikes-north-end-logo-wave.png')}
             alt={business.name}
             width={589}
             height={600}
             sizes="86px"
             loading="eager"
           />
-        </a>
+        </Link>
 
         <nav className={`main-nav${navOpen ? ' open' : ''}`} id="main-nav" aria-label="Main navigation">
           {navLinks.filter((link) => link.href !== '/order').map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className={normalize(link.href) === pathname ? 'active' : undefined}
@@ -38,7 +40,7 @@ export default function Header() {
               onClick={() => setNavOpen(false)}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="nav-actions">
             <OrderButton className="btn btn-primary">

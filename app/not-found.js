@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 import OrderButton from '@/components/OrderButton';
 
 // Next.js adds the noindex tag to this page itself.
@@ -19,10 +20,10 @@ export default function NotFound() {
             We couldn&apos;t find the page you were looking for. It may have moved, or the link might be off by a topping or two.
           </p>
           <div className="btn-row not-found-actions">
-            <a href="/menu" className="btn btn-primary">See the menu <span className="arrow" aria-hidden="true">&rarr;</span></a>
+            <Link href="/menu" className="btn btn-primary">See the menu <span className="arrow" aria-hidden="true">&rarr;</span></Link>
             <OrderButton className="btn btn-outline">Order online</OrderButton>
           </div>
-          <p className="not-found-home"><a href="/">Back to the home page</a></p>
+          <p className="not-found-home"><Link href="/">Back to the home page</Link></p>
         </section>
       </main>
       <Footer />

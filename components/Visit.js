@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { asset } from '@/lib/base-path';
 import { business } from '@/lib/site-config';
 import MapEmbed from './MapEmbed';
 import OrderButton from './OrderButton';
@@ -18,7 +20,7 @@ export default function Visit({ compact = false }) {
             <a className="home-visit-phone" href={business.phoneHref}>{business.phone}</a>
             <div className="btn-row">
               <a href={business.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Get directions</a>
-              <a href="/menu" className="btn btn-outline">View menu</a>
+              <Link href="/menu" className="btn btn-outline">View menu</Link>
             </div>
           </div>
           <MapEmbed className="home-visit-map" />
@@ -57,7 +59,7 @@ export default function Visit({ compact = false }) {
         <div className="visit-closing">
           <Image
             className="visit-sign-image"
-            src="/images/visit-signpost.jpg"
+            src={asset('/images/visit-signpost.jpg')}
             alt="Illustrated signpost reading Pizza, Friends, Narragansett, Good Times, overlooking the ocean"
             width={1752}
             height={897}

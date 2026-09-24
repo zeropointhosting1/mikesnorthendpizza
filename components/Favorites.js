@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/base-path';
 import { favorites } from '@/lib/site-config';
 
 export default function Favorites() {
@@ -13,7 +14,7 @@ export default function Favorites() {
           {favorites.map((item) => (
             <article className="favorite-card" key={item.name}>
               <div className="favorite-img">
-                <Image src={item.image} alt={item.alt} width={item.width} height={item.height} sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 380px" />
+                <Image src={asset(item.image)} alt={item.alt} width={item.width} height={item.height} sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 380px" />
               </div>
               <h3>{item.name}</h3>
               <p>{item.description}</p>

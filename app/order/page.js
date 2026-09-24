@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Cta from '@/components/Cta';
@@ -26,7 +27,7 @@ export default function OrderPage() {
           </p>
           <a className="btn btn-primary" href={business.phoneHref}>Call to order · {business.phone}</a>
           <p className="order-intro-note">
-            <a href="/menu">See the full menu</a> before you call.
+            <Link href="/menu">See the full menu</Link> before you call.
           </p>
         </section>
         <Cta />

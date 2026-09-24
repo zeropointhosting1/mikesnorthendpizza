@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { asset } from '@/lib/base-path';
 import { business, TOAST_ORDER_URL } from '@/lib/site-config';
 import OrderButton from './OrderButton';
 
@@ -7,7 +9,7 @@ export default function Hero() {
     <section className="hero" id="home" aria-labelledby="hero-heading">
       <div className="hero-media">
           <Image
-            src="/images/hero-background.png"
+            src={asset('/images/hero-background.png')}
             alt="Close-up of a sliced pizza with melted cheese and a charred crust on a metal tray"
             width={2051}
             height={767}
@@ -21,7 +23,7 @@ export default function Hero() {
           <h1 id="hero-heading">Great Pizza.<br />Good People.<br />Narragansett.</h1>
           <p className="hero-sub">Freshly made pies, loaded grinders, and the favorites you come back for. Right here on Boston Neck Road.</p>
           <div className="btn-row">
-            <a href="/menu" className="btn btn-primary">Explore the menu <span className="arrow" aria-hidden="true">&rarr;</span></a>
+            <Link href="/menu" className="btn btn-primary">Explore the menu <span className="arrow" aria-hidden="true">&rarr;</span></Link>
             {TOAST_ORDER_URL ? (
               <OrderButton className="btn btn-outline hero-order-secondary">Order online</OrderButton>
             ) : (

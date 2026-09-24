@@ -1,0 +1,49 @@
+# Builds the static site and publishes it to GitHub Pages on every push to
+# the mikesnorthendpizza branch (or when run by hand from the Actions tab).
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [mikesnorthendpizza]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Demo lives at https://zeropointhosting1.github.io/mikesnorthendpizza/.
+      # Remove these three once the site moves to mikesnorthendpizza.com.
+      NEXT_PUBLIC_BASE_PATH: /mikesnorthendpizza
+      NEXT_PUBLIC_SITE_URL: https://zeropointhosting1.github.io/mikesnorthendpizza
+      NEXT_PUBLIC_NOINDEX: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

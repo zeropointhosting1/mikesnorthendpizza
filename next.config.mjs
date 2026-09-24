@@ -12,10 +12,10 @@ const nextConfig = {
     // No image optimization server exists on static hosting.
     unoptimized: true,
   },
-  // If this ends up deployed to https://<user>.github.io/<repo>/ instead of
-  // a custom domain, uncomment and set both to '/<repo>'.
-  // basePath: '',
-  // assetPrefix: '',
+  // Set when the site is served from a subfolder, e.g. the GitHub Pages demo
+  // at https://<user>.github.io/<repo>/ (see .github/workflows/deploy.yml).
+  // Empty on a custom domain. Image paths add it via asset() in lib/base-path.js.
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
 };
 
 export default nextConfig;

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { asset } from '@/lib/base-path';
 
 export default function About({ fullStory = false }) {
   return (
@@ -6,7 +7,7 @@ export default function About({ fullStory = false }) {
       <div className="about-grid">
         <div className="about-media">
           <Image
-            src="/images/about-mikes-home.jpg"
+            src={asset('/images/about-mikes-home.jpg')}
             alt="A man standing outside Mike's North End Pizza Co. in a wave-logo shirt, looking up at the shop sign"
             width={1085}
             height={1449}
