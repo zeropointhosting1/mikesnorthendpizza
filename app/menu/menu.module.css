@@ -1,0 +1,85 @@
+/* Header height = logo (589x600 image) + 20px padding + 1px border; JS refines it after load. */
+.menu { --menu-header-height: calc(86px * 600 / 589 + 21px); background: #fffefa; padding-bottom: 40px; }
+.menu h1, .menu h2, .menu h3, .menu h4 { letter-spacing: 0; }
+.menu a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.intro { max-width: 960px; padding-top: 34px; padding-bottom: 20px; }
+.intro h1 { font-size: 2.5rem; }
+.orderActions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 18px; }
+.mobileCall { display: none; }
+.layout { max-width: 960px; }
+.navBar { position: sticky; top: var(--menu-header-height); z-index: 30; background: #fffefa; border-bottom: 1px solid var(--line); margin-bottom: 32px; }
+.navBar::before, .navBar::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40px; pointer-events: none; opacity: 0; transition: opacity .2s ease; }
+.navBar::before { left: 0; background: linear-gradient(to right, #fffefa, #fffefa00); }
+.navBar::after { right: 0; background: linear-gradient(to left, #fffefa, #fffefa00); }
+.navBar[data-more-start]::before, .navBar[data-more-end]::after { opacity: 1; }
+.navigation { display: flex; gap: 8px; padding: 12px 0; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+.navigation::-webkit-scrollbar { display: none; }
+.navigation a { flex-shrink: 0; display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; font-size: .82rem; color: var(--ink-soft); transition: background .15s ease, border-color .15s ease, color .15s ease; }
+.navigation a:hover { border-color: var(--green); color: var(--green); }
+.navigation a[aria-current] { background: var(--green); border-color: var(--green); color: #fffefa; }
+.content { min-width: 0; }
+.chapter { padding-bottom: 44px; scroll-margin-top: calc(var(--menu-header-height) + 98px); }
+.chapterHeading { margin-bottom: 24px; }
+.chapterHeading h2 { font-size: 1.8rem; }
+.sectionGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 44px; align-items: start; }
+.section { min-width: 0; scroll-margin-top: calc(var(--menu-header-height) + 106px); }
+.sectionHeading { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid #dce1d8; }
+.sectionHeading h3, .specialtyHeading h3 { font-family: var(--font-body), Georgia, serif; font-weight: 600; font-size: 1.05rem; line-height: 1.4; }
+.sectionPrice { white-space: nowrap; font-size: .9rem; }
+.sectionPrice small { color: var(--ink-soft); font-size: .72rem; }
+.subtitle { margin: 12px 0; font-size: .85rem; color: var(--ink-soft); }
+.sizeLabels { display: grid; grid-template-columns: 60px 60px; justify-content: end; gap: 8px; font-size: .72rem; color: var(--ink-soft); text-align: right; margin: 12px 0 0; }
+.items { margin: 0; padding: 0; list-style: none; }
+.items li { padding: 10px 0; }
+.itemRow { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: .9rem; }
+.sizedRow { display: grid; grid-template-columns: minmax(0, 1fr) 60px 60px; gap: 8px; }
+.itemName { font-weight: 500; }
+.price { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-size: .85rem; }
+.description { font-size: .83rem; line-height: 1.7; color: var(--ink-soft); margin: 5px 0 0; }
+.notes { margin-top: 16px; }
+.notes p { font-size: .8rem; line-height: 1.8; color: var(--ink-soft); margin: 0; }
+.notes p + p { margin-top: 8px; }
+.nameGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+.pizzaBuild { max-width: 100%; }
+.specialties { margin-top: 30px; scroll-margin-top: calc(var(--menu-header-height) + 106px); }
+.specialtyHeading { display: flex; align-items: center; justify-content: space-between; gap: 14px; border-bottom: 1px solid #dce1d8; padding-bottom: 14px; }
+.specialtyHeading p { margin: 0; display: flex; gap: 22px; font-size: .85rem; white-space: nowrap; }
+.specialtyHeading strong { margin-left: 6px; font-weight: 500; }
+.specialtyList { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 44px; }
+.specialtyList li { padding: 16px 0; }
+.specialtyList h4 { font-family: var(--font-body), Georgia, serif; font-size: .94rem; color: var(--green); margin: 0 0 5px; font-weight: 600; }
+.specialtyList p { font-size: .83rem; line-height: 1.75; color: var(--ink-soft); margin: 0; }
+.advisory { border-top: 1px solid var(--line); padding-top: 20px; font-size: .72rem; color: var(--ink-soft); line-height: 1.8; margin: 0 0 14px; }
+.backTop { display: inline-block; padding: 10px 0; color: var(--green); font-size: .85rem; }
+@media (max-width: 640px) {
+  .menu { --menu-header-height: calc(68px * 600 / 589 + 21px); }
+}
+@media (max-width: 600px) {
+  .intro { padding: 24px 20px 12px; }
+  .orderActions { flex-wrap: nowrap; gap: 10px; }
+  .orderActions :global(.btn) { flex: 1 1 0; justify-content: center; padding: 12px 10px; font-size: .88rem; }
+  .desktopCall { display: none; }
+  .mobileCall { display: inline; }
+  .intro h1 { font-size: 2rem; }
+  .layout { padding: 0 20px; }
+  .navBar { margin-inline: -20px; margin-bottom: 26px; }
+  .navigation { padding-inline: 20px; scroll-padding-inline: 20px; }
+  .navigation a { padding: 0 14px; font-size: .8rem; }
+  .chapterHeading h2 { font-size: 1.5rem; }
+  .sectionGrid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .specialtyHeading { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .specialtyList { grid-template-columns: minmax(0, 1fr); }
+  .specialtyList p, .description { font-size: .87rem; }
+}
+
+/* Tablet and desktop: centered title, buttons and category pills. */
+@media (min-width: 601px) {
+  .intro { text-align: center; padding-top: 44px; padding-bottom: 24px; }
+  .intro h1 { font-size: 2.75rem; }
+  .orderActions { justify-content: center; margin-top: 22px; }
+  .navigation { gap: 10px; padding: 14px 0; }
+  .navigation a { min-height: 42px; padding: 0 18px; font-size: .86rem; }
+  /* Auto margins center the row but still let it scroll if it ever overflows. */
+  .navigation a:first-child { margin-left: auto; }
+  .navigation a:last-child { margin-right: auto; }
+}

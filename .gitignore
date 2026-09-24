@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Local env files (the .example template is committed)
+.env*.local
+.env
+
+# OS / editor
+.DS_Store
+*.log
