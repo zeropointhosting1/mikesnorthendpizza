@@ -1,18 +1,15 @@
 import { TOAST_ORDER_URL, business } from '@/lib/site-config';
 
 // Renders an "Order Online" link. Once TOAST_ORDER_URL is set in
-// lib/site-config.js this opens the Toast ordering page in a new tab;
+// lib/site-config.js this opens the Toast ordering page in the same tab;
 // until then it falls back to a one-tap phone call.
-export default function OrderButton({ className, children }) {
-  const isExternal = Boolean(TOAST_ORDER_URL);
+export default function OrderButton() {
   return (
     <a
       href={TOAST_ORDER_URL || business.phoneHref}
-      className={className}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener' : undefined}
+      className="btn order-button"
     >
-      {children}
+      Order Online <span className="arrow" aria-hidden="true">&rarr;</span>
     </a>
   );
 }

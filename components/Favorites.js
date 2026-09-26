@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { asset } from '@/lib/base-path';
 import { favorites } from '@/lib/site-config';
 
@@ -20,6 +21,9 @@ export default function Favorites() {
               <p>{item.description}</p>
             </article>
           ))}
+        </div>
+        <div className="favorites-more">
+          <Link href="/menu" className="btn btn-outline">View Full Menu <span className="arrow" aria-hidden="true">&rarr;</span></Link>
         </div>
       </div>
     </section>

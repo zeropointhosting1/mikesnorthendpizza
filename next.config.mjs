@@ -7,7 +7,7 @@ const nextConfig = {
   // index.html inside a matching folder.
   trailingSlash: true,
   // Lets phones on the local network load dev scripts from `next dev`.
-  allowedDevOrigins: ['192.168.0.130'],
+  allowedDevOrigins: ['192.168.0.130', '192.168.1.226'],
   images: {
     // No image optimization server exists on static hosting.
     unoptimized: true,

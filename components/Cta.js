@@ -11,9 +11,7 @@ export default function Cta() {
         <p className="eyebrow">Good Pizza Is Always A Good Idea</p>
         <h2>Order Online Today</h2>
         <p className="cta-sub">Same great pizza, even easier.</p>
-        <OrderButton className="btn btn-light">
-          Order Online <span className="arrow">&rarr;</span>
-        </OrderButton>
+        <OrderButton />
       </div>
     </section>
   );

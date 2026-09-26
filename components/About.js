@@ -41,9 +41,9 @@ export default function About({ fullStory = false }) {
               and leave well fed and smiling.
             </p>
           </> : <p>
-            At Mike&apos;s North End Pizza, we&apos;re more than just a pizza shop &mdash; we&apos;re part of the
-            Narragansett community. Good food, friendly faces, and a place where everyone&apos;s welcome. That&apos;s
-            what we&apos;re all about.
+            Mike&apos;s North End Pizza brings the neighborhood pizza-shop tradition to Narragansett, fresh
+            pizza, grinders, wings and the kind of place where regulars quickly become friends. We&apos;re
+            proud to call Boston Neck Road home.
           </p>}
           <p className="script">See you at Mike&apos;s!</p>
           <svg className="script-underline" width="150" height="14" viewBox="0 0 150 14" fill="none" aria-hidden="true">

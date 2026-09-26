@@ -3,7 +3,7 @@ import { getGoogleReviews } from '@/lib/google-reviews';
 import ReviewsCarousel from './ReviewsCarousel';
 
 export default async function Reviews() {
-  const { reviews, rating, count, mapsUrl } = await getGoogleReviews();
+  const { reviews, mapsUrl } = await getGoogleReviews();
 
   return (
     <section className="reviews">
@@ -11,11 +11,6 @@ export default async function Reviews() {
         <div className="section-head center">
           <p className="eyebrow">Google Reviews</p>
           <h2>What Our Customers Say</h2>
-          {rating && (
-            <p className="review-summary">
-              <span className="stars">★</span> <strong>{rating.toFixed(1)}</strong> &middot; {count.toLocaleString()} Google reviews
-            </p>
-          )}
         </div>
         <ReviewsCarousel reviews={reviews} />
         <div className="review-more-row">

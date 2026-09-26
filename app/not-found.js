@@ -21,7 +21,7 @@ export default function NotFound() {
           </p>
           <div className="btn-row not-found-actions">
             <Link href="/menu" className="btn btn-primary">See the menu <span className="arrow" aria-hidden="true">&rarr;</span></Link>
-            <OrderButton className="btn btn-outline">Order online</OrderButton>
+            <OrderButton />
           </div>
           <p className="not-found-home"><Link href="/">Back to the home page</Link></p>
         </section>

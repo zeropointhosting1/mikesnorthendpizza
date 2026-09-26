@@ -13,7 +13,7 @@ export default function Visit({ compact = false }) {
         <div className="wrap home-visit-layout">
           <div className="home-visit-location">
             <p className="eyebrow">Visit Mike&apos;s</p>
-            <h2 id="home-visit-title">See you on<br />Boston Neck Road.</h2>
+            <h2 id="home-visit-title">Your Neighborhood Pizza Spot<br />in Narragansett</h2>
             <address>
               <a href={business.mapsUrl} target="_blank" rel="noopener noreferrer">{business.addressLine1}<br />{business.addressLine2}</a>
             </address>
@@ -50,7 +50,7 @@ export default function Visit({ compact = false }) {
           </a>
         </div>
 
-        <MapEmbed className="visit-map" />
+        <MapEmbed className="visit-map" eager />
 
         <WeeklyHours headingLevel={2} className="visit-hours" />
       </div>
@@ -68,9 +68,7 @@ export default function Visit({ compact = false }) {
           <div className="visit-closing-copy">
             <h2>Can&apos;t make it in?</h2>
             <p>Order ahead and your pizza will be hot and ready when you get here.</p>
-            <OrderButton className="btn btn-primary">
-              Order online <span className="arrow">&rarr;</span>
-            </OrderButton>
+            <OrderButton />
           </div>
         </div>
       </div>

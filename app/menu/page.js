@@ -46,7 +46,7 @@ export default function MenuPage() {
       <header className={`wrap ${styles.intro}`}>
         <h1>Our menu</h1>
         <div className={styles.orderActions}>
-          <OrderButton className="btn btn-primary">Order Online <span className="arrow" aria-hidden="true">&rarr;</span></OrderButton>
+          <OrderButton />
           <a className="btn btn-outline" href={business.phoneHref} aria-label={`Call to order: ${business.phone}`}><span className={styles.desktopCall}>Call {business.phone}</span><span className={styles.mobileCall}>Call to Order</span></a>
         </div>
       </header>
@@ -63,7 +63,7 @@ export default function MenuPage() {
               <ul className={styles.specialtyList}>{specialtyPizzas.map(([name, description]) => <li key={name}><h4>{name}</h4><p>{description}</p></li>)}</ul>
             </section>}
           </section>)}
-          <p className={styles.advisory}>Consuming raw or undercooked meats, poultry, seafood, shellfish or eggs may increase your risk of foodborne illness, especially if you have medical conditions.</p>
+          <p className={styles.advisory}>*Consuming raw or undercooked meats, poultry, seafood, shellfish or eggs may increase your risk of foodborne illness, especially if you have medical conditions.</p>
           <a className={styles.backTop} href="#main">Back to top <span aria-hidden="true">&uarr;</span></a>
         </div>
       </div>

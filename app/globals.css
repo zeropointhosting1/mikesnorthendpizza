@@ -135,8 +135,8 @@ h1, h2, h3 {
   font-size: 0.92rem;
   font-weight: 500;
 }
-.main-nav a { color: var(--ink-soft); position: relative; padding: 12px 0; }
-.main-nav a:hover, .main-nav a.active { color: var(--green-dark); }
+.main-nav > a { color: var(--ink-soft); position: relative; padding: 12px 0; }
+.main-nav > a:hover, .main-nav > a.active { color: var(--green-dark); }
 .main-nav a.active::after {
   content: "";
   position: absolute;
@@ -171,7 +171,6 @@ h1, h2, h3 {
   isolation: isolate;
   overflow: hidden;
   background: #eeede9;
-  border-bottom: 1px solid var(--line);
   scroll-margin-top: 145px;
 }
 .hero-grid {
@@ -215,10 +214,11 @@ h1, h2, h3 {
 
 /* Favorites */
 .favorites { padding: 90px 0; background: var(--cream); }
+.favorites .wrap { max-width: 1320px; }
 .favorites-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 34px;
+  gap: 28px;
   margin-top: 48px;
 }
 .favorite-img {
@@ -227,10 +227,11 @@ h1, h2, h3 {
   margin-bottom: 18px;
   box-shadow: var(--shadow);
 }
-.favorite-img img { width: 100%; height: 230px; object-fit: cover; transition: transform .4s ease; }
+.favorite-img img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .4s ease; }
 .favorite-card:hover .favorite-img img { transform: scale(1.05); }
 .favorite-card h3 { font-size: 1.2rem; margin-bottom: 6px; }
 .favorite-card p { color: var(--ink-soft); margin: 0; font-size: 0.94rem; }
+.favorites-more { display: flex; justify-content: center; margin-top: 44px; }
 
 /* About */
 .about {
@@ -489,9 +490,9 @@ h1, h2, h3 {
     padding: 12px 28px 20px;
   }
   .main-nav.open { display: flex; }
-  .main-nav a { padding: 10px 0; width: 100%; }
+  .main-nav > a { padding: 10px 0; width: 100%; }
   .nav-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
-  .main-nav .nav-actions .btn { justify-content: center; padding: 13px 20px; }
+  .main-nav .nav-actions .btn:not(.order-button) { justify-content: center; padding: 13px 20px; }
   .nav-actions-row { display: flex; gap: 10px; }
   .main-nav .nav-actions-row .btn { flex: 1 1 0; width: auto; }
   .main-nav .nav-actions .btn-primary { color: var(--cream); }
@@ -520,13 +521,13 @@ h1, h2, h3 {
   .header-inner { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; padding-inline: 20px; }
   .header-inner > .logo { width: 68px; grid-column: 2; grid-row: 1; }
   .header-right { gap: 10px; grid-column: 3; grid-row: 1; justify-self: end; }
-  .header-right .btn-sm { display: none; }
+  .header-right .order-button { display: none; }
   .hero { display: flex; flex-direction: column; scroll-margin-top: 120px; padding: 0; }
   .hero-grid { order: 0; width: 100%; min-height: 0; }
   .hero-copy { width: 100%; padding: 30px 0 24px; }
   .hero-copy h1 { font-size: clamp(2.45rem, 9.8vw, 3.5rem); margin: 18px 0; }
   .hero-sub { max-width: 440px; margin-bottom: 24px; font-size: .95rem; }
-  .hero .btn { flex: 1 1 140px; justify-content: center; min-height: 46px; padding: 12px; font-size: .84rem; }
+  .hero .btn:not(.order-button) { flex: 1 1 140px; justify-content: center; min-height: 46px; padding: 12px; font-size: .84rem; }
   .hero-contact { display: flex; flex-wrap: wrap; gap: 14px 24px; justify-content: space-between; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
   .hero-address, .hero-phone { display: flex; flex-direction: column; justify-content: center; gap: 2px; min-height: 48px; }
   .hero-address { padding: 0; border-radius: 0; background: none; box-shadow: none; font-weight: 400; }
@@ -696,4 +697,60 @@ button, input, select, textarea { font: inherit; }
   .home-visit-map { grid-column: auto; grid-row: auto; min-height: 0; height: 280px; }
   .weekly-hours { max-width: none; }
   .home-visit .btn { justify-content: center; flex: 1 1 125px; padding: 12px 14px; }
+}
+
+/* One shared format for every online-order action, on light and dark sections. */
+.btn.order-button {
+  justify-content: center;
+  min-height: 48px;
+  padding: 13px 24px;
+  border: 1px solid var(--cream);
+  border-radius: 6px;
+  background: var(--green);
+  color: var(--cream);
+  font-size: .92rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.btn.order-button:hover { background: var(--green-dark); color: var(--cream); }
+.btn.order-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.hero .btn.hero-menu-button {
+  color: var(--green);
+  border-color: var(--green);
+  background: rgba(246, 243, 236, 0.55);
+}
+.hero .btn.hero-menu-button:hover {
+  color: var(--green-dark);
+  background: rgba(246, 243, 236, 0.8);
+}
+.hero-menu-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+@media (max-width: 980px) {
+  .nav-actions .order-button { width: 100%; }
+}
+@media (max-width: 640px) {
+  .hero .order-button { flex: 1 1 140px; }
+}
+
+/* Floating order button on phones (see components/StickyOrder.js); larger
+   screens already show the Order button in the header.
+   Font and colors come from .btn.order-button so it matches the other buttons. */
+.btn.sticky-order {
+  position: fixed;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  z-index: 60;
+  min-height: 0;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: .84rem;
+  gap: 6px;
+  box-shadow: 0 10px 24px -8px rgba(23, 44, 32, 0.55);
+  transition: opacity .2s ease, transform .15s ease, background .15s ease;
+}
+.btn.sticky-order:not(.is-visible) { opacity: 0; pointer-events: none; }
+@media (min-width: 641px) {
+  .btn.sticky-order { display: none; }
+}
+@media (max-width: 640px) {
+  .btn.sticky-order { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); }
 }

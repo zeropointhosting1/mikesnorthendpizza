@@ -13,6 +13,11 @@ export default function MenuNavigation({ groups }) {
     const header = document.querySelector('.site-header');
     const menu = document.getElementById('main');
     const sections = groups.map(group => document.getElementById(group.id));
+    // Held here rather than read from nav.current in callbacks: React clears
+    // the ref on unmount before this cleanup runs, and a queued resize
+    // callback can still fire in between.
+    const row = nav.current;
+    const bar = row.parentElement;
     let frame = null;
     let offset = 0;
     const update = () => {
@@ -42,13 +47,13 @@ export default function MenuNavigation({ groups }) {
     };
     const measure = () => {
       const headerHeight = header.getBoundingClientRect().height;
-      offset = headerHeight + nav.current.parentElement.offsetHeight + 40;
+      offset = headerHeight + bar.offsetHeight + 40;
       menu.style.setProperty('--menu-header-height', `${headerHeight}px`);
       schedule();
     };
     const resize = new ResizeObserver(measure);
     resize.observe(header);
-    resize.observe(nav.current);
+    resize.observe(row);
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', measure);
     measure();
@@ -64,7 +69,7 @@ export default function MenuNavigation({ groups }) {
   // Slide the active pill into view when the category row scrolls sideways.
   useEffect(() => {
     const row = nav.current;
-    const link = row.querySelector('[aria-current]');
+    const link = row?.querySelector('[aria-current]');
     if (!link || row.scrollWidth <= row.clientWidth) return;
     const left = link.offsetLeft - (row.clientWidth - link.offsetWidth) / 2;
     row.scrollTo({ left, behavior: 'smooth' });

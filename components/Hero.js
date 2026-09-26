@@ -9,10 +9,10 @@ export default function Hero() {
     <section className="hero" id="home" aria-labelledby="hero-heading">
       <div className="hero-media">
           <Image
-            src={asset('/images/hero-background.png')}
+            src={asset('/images/hero-pizza.png')}
             alt="Close-up of a sliced pizza with melted cheese and a charred crust on a metal tray"
             width={2051}
-            height={767}
+            height={763}
             sizes="100vw"
             preload
           />
@@ -21,14 +21,14 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow">Narragansett, Rhode Island</p>
           <h1 id="hero-heading">Great Pizza.<br />Good People.<br />Narragansett.</h1>
-          <p className="hero-sub">Freshly made pies, loaded grinders, and the favorites you come back for. Right here on Boston Neck Road.</p>
+          <p className="hero-sub">Fresh pizza, loaded grinders, wings and local favorites, right here on Boston Neck Road.</p>
           <div className="btn-row">
-            <Link href="/menu" className="btn btn-primary">Explore the menu <span className="arrow" aria-hidden="true">&rarr;</span></Link>
             {TOAST_ORDER_URL ? (
-              <OrderButton className="btn btn-outline hero-order-secondary">Order online</OrderButton>
+              <OrderButton />
             ) : (
               <a href={business.phoneHref} className="btn btn-outline hero-order-secondary">Call to order</a>
             )}
+            <Link href="/menu" className="btn hero-menu-button">Explore the menu <span className="arrow" aria-hidden="true">&rarr;</span></Link>
           </div>
           <div className="hero-contact">
             <a className="hero-address" href={business.mapsUrl} target="_blank" rel="noopener noreferrer">
