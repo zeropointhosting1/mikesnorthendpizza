@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
+  shareTitle: "Mike's North End Pizza",
   description:
     'Great Pizza. Good People. Narragansett. Local pizza, fresh ingredients, and a neighborhood spot that feels like home.',
   path: '/',
