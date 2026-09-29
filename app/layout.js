@@ -1,5 +1,6 @@
 import { Abril_Fatface, Lora, Lobster } from 'next/font/google';
-import { SITE_URL } from '@/lib/site-config';
+import Script from 'next/script';
+import { SITE_URL, GOOGLE_ADS_ID } from '@/lib/site-config';
 import { DEFAULT_TITLE, SHARE_IMAGE, restaurantJsonLd } from '@/lib/seo';
 import './globals.css';
 
@@ -45,6 +46,14 @@ export default function RootLayout({ children }) {
           // JSON.stringify output is safe here except for "<", which could close the tag.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantJsonLd()).replace(/</g, '\\u003c') }}
         />
+        {/* Google Ads tag (gtag.js). */}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} />
+        <Script id="google-ads-tag">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GOOGLE_ADS_ID}');`}
+        </Script>
       </body>
     </html>
   );
